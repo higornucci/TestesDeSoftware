@@ -1,9 +1,7 @@
 package carrinhoDeCompra;
 
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.equalTo;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,6 +22,6 @@ public class ItemDoCarrinhoTeste {
 		double totalEsperado = 2400d;
 		ItemDoCarrinho itemDoCarrinho = new ItemDoCarrinho(geladeira, 2);
 		
-		//assertThat(totalEsperado, is(equals(itemDoCarrinho.getValorTotal())));
+		assertEquals(totalEsperado, itemDoCarrinho.getValorTotal(), 0.001);
 	}
 }

@@ -2,7 +2,7 @@ package carrinhoDeCompra;
 
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;

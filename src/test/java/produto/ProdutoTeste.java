@@ -1,7 +1,5 @@
 package produto;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import br.com.htcursos.produto.Produto;

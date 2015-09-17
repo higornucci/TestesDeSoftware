@@ -13,7 +13,7 @@ public class ItemDoCarrinho {
 	}
 	
 	public double getValorTotal() {
-		return 0;
+		return quantidade * produto.getValorUnitario();
 	}
 
 	public Produto getProduto() {
