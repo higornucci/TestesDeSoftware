@@ -1,4 +1,4 @@
-package frete;
+package br.com.htcursos.frete;
 
 public class CalculadoraDeFrete {
 
@@ -10,7 +10,7 @@ public class CalculadoraDeFrete {
 		this.cepDeOrigem = cepDeOrigem;
 	}
 
-	public double calcularFretePara(String cepDeDestino) {
+	public double calcularFretePara(String cepDeDestino) throws ServicoDeFreteIndisponivel {
 		return servicoDeFrete.calcularFretePara(cepDeOrigem, cepDeDestino);
 	}
 

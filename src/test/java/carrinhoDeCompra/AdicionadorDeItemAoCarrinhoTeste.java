@@ -4,7 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import br.com.htcursos.carrinho.AdicionadorDeItemAoCarrinho;
+import br.com.htcursos.carrinho.CarrinhoDAO;
 import br.com.htcursos.carrinho.CarrinhoDeCompra;
+import br.com.htcursos.carrinho.CarrinhoRepository;
 import br.com.htcursos.carrinho.ItemDoCarrinho;
 import br.com.htcursos.produto.Produto;
 
@@ -29,6 +32,6 @@ public class AdicionadorDeItemAoCarrinhoTeste {
 					new AdicionadorDeItemAoCarrinho(carrinhoRepository);
 		adicionador.adicionar(umCelular, carrinho);
 		
-		Mockito.verify(carrinhoRepository).salvar(carrinho);
+		Mockito.verify(carrinhoRepository, Mockito.times(1)).salvar(carrinho);
 	}
 }

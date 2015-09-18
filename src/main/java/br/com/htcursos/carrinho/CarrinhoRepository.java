@@ -1,6 +1,4 @@
-package carrinhoDeCompra;
-
-import br.com.htcursos.carrinho.CarrinhoDeCompra;
+package br.com.htcursos.carrinho;
 
 public interface CarrinhoRepository {
 	void salvar(CarrinhoDeCompra carrinho);

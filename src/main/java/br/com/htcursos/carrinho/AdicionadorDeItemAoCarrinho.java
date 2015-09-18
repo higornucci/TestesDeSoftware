@@ -1,7 +1,4 @@
-package carrinhoDeCompra;
-
-import br.com.htcursos.carrinho.CarrinhoDeCompra;
-import br.com.htcursos.carrinho.ItemDoCarrinho;
+package br.com.htcursos.carrinho;
 
 public class AdicionadorDeItemAoCarrinho {
 
