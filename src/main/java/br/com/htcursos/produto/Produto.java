@@ -1,9 +1,17 @@
 package br.com.htcursos.produto;
 
-public class Produto {
+import javax.persistence.Entity;
+
+import br.com.htcursos.EntidadeBase;
+
+@Entity
+public class Produto extends EntidadeBase {
 
 	private double valorUnitario;
 	private String descricao;
+	
+	Produto(){
+	}
 
 	public Produto(String descricao, double valorUnitario) throws ValorInvalido {
 		verificarSeValorMenorQueZero(valorUnitario);

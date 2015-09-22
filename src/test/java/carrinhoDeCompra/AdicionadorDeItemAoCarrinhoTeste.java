@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import br.com.htcursos.carrinho.AdicionadorDeItemAoCarrinho;
-import br.com.htcursos.carrinho.CarrinhoDAO;
+import br.com.htcursos.carrinho.CarrinhoHibernateDAO;
 import br.com.htcursos.carrinho.CarrinhoDeCompra;
 import br.com.htcursos.carrinho.CarrinhoRepository;
 import br.com.htcursos.carrinho.ItemDoCarrinho;
@@ -26,7 +26,7 @@ public class AdicionadorDeItemAoCarrinhoTeste {
 		ItemDoCarrinho umCelular = new ItemDoCarrinho(celular, UM);
 		CarrinhoDeCompra carrinho = new CarrinhoDeCompra();
 		
-		CarrinhoRepository carrinhoRepository = Mockito.mock(CarrinhoDAO.class);
+		CarrinhoRepository carrinhoRepository = Mockito.mock(CarrinhoHibernateDAO.class);
 		
 		AdicionadorDeItemAoCarrinho adicionador = 
 					new AdicionadorDeItemAoCarrinho(carrinhoRepository);
