@@ -6,4 +6,16 @@
 		</dir>
 	</classpath>
 
+	<web>
+		<link target="/">
+			<dir name="D:/projetos/testesdesoftware/target/m2e-wtp/web-resources">
+				<exclude name="/"/>
+			</dir>
+		</link>
+		<link target="/">
+			<dir name="D:/projetos/testesdesoftware/src/main/webapp">
+			</dir>
+		</link>
+	</web>
+
 </application>
