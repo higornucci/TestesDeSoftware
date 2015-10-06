@@ -1,5 +1,8 @@
 package br.com.htcursos.produto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +22,18 @@ public class ConsultaProdutoService {
 
 	private ProdutoResponse converter(Produto produto) {
 		return new ProdutoResponse(produto.getId(), produto.getDescricao(), produto.getValorUnitario());
+	}
+
+	public List<ProdutoResponse> buscarTodos() {
+		List<Produto> produtos = produtoRepository.buscarTodos();
+		return converter(produtos);
+	}
+
+	private List<ProdutoResponse> converter(List<Produto> produtos) {
+		List<ProdutoResponse> produtosResponse = new ArrayList<>();
+		for (Produto produto : produtos) {
+			produtosResponse.add(converter(produto));
+		}
+		return produtosResponse;
 	}
 }

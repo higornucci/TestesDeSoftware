@@ -28,11 +28,19 @@ public class ProdutoResourceTeste {
 	
 	@Test
 	public void deve_adicionar_um_produto() throws Exception {
-		ProdutoRequest produtoRequest = new ProdutoRequest("Fogão", 500d);
+		ProdutoRequest produtoRequest = new ProdutoRequest("iPad", 3000d);
 		given().
 			contentType(MediaType.APPLICATION_JSON).
 			body(produtoRequest).
 	       	post("http://localhost:8080/testesdesoftware/rest/produtos/").
+	    then()
+	    	.statusCode(200);
+	}
+	
+	@Test
+	public void deve_excluir_um_produto() throws Exception {
+		given().
+	       	delete("http://localhost:8080/testesdesoftware/rest/produtos/1").
 	    then()
 	    	.statusCode(200);
 	}

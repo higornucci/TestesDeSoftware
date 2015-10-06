@@ -35,4 +35,17 @@ public class ProdutoHibernateDAO implements ProdutoRepository {
 				.getResultList();
 	}
 
+	@Override
+	public void excluir(int id) {
+		entityManager.remove(entityManager.getReference(Produto.class, id));
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Produto> buscarTodos() {
+		return entityManager
+				.createQuery("FROM Produto p")
+				.getResultList();
+	}
+
 }

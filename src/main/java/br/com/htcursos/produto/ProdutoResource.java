@@ -1,8 +1,10 @@
 package br.com.htcursos.produto;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -25,9 +27,18 @@ public class ProdutoResource {
 	
 	@Autowired
 	private AdicionaProdutoService adicionaProdutoService;
+	
+	@Autowired
+	private RemoveProdutoService removeProdutoService;
 
 	@Context
 	protected UriInfo uriInfo;
+	
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public List<ProdutoResponse> buscarTodos() {
+		return consultaProdutoService.buscarTodos();
+	}
 
 	@GET
 	@Path("{id}")
@@ -42,5 +53,13 @@ public class ProdutoResource {
 		Integer produtoId = adicionaProdutoService.inserir(produtoRequest);
 		URI location = uriInfo.getAbsolutePathBuilder().path(produtoId.toString()).build();
 		return Response.created(location).status(200).build();
+	}
+	
+	@DELETE
+	@Path("{id}")
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public Response deletar(@PathParam("id") Integer id) throws ValorInvalido {
+		removeProdutoService.remover(id);
+		return Response.ok().build();
 	}
 }
