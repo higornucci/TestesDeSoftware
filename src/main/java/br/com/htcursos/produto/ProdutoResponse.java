@@ -1,16 +1,18 @@
 package br.com.htcursos.produto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@JsonInclude(value=Include.NON_EMPTY)
-public class ProdutoDTO {
+@XmlRootElement
+public class ProdutoResponse {
 
 	private int id;
 	private String descricao;
 	private double valorUnitario;
+	
+	ProdutoResponse() {
+	}
 
-	public ProdutoDTO(int id, String descricao, double valorUnitario) {
+	public ProdutoResponse(int id, String descricao, double valorUnitario) {
 		this.id = id;
 		this.descricao = descricao;
 		this.valorUnitario = valorUnitario;

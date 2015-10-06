@@ -2,10 +2,8 @@ package br.com.htcursos.produto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class ConsultaProdutoService {
 
 	private ProdutoRepository produtoRepository;
@@ -15,7 +13,11 @@ public class ConsultaProdutoService {
 		this.produtoRepository = produtoRepository;
 	}
 	
-	public ProdutoDTO buscarProdutoPeloId(int id) {
-		return new ProdutoDTO(id, "Geladeira", 1200d);
+	public ProdutoResponse buscarProdutoPeloId(int id) {
+		return converter(produtoRepository.buscarPelo(id));
+	}
+
+	private ProdutoResponse converter(Produto produto) {
+		return new ProdutoResponse(produto.getId(), produto.getDescricao(), produto.getValorUnitario());
 	}
 }
