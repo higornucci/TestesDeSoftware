@@ -9,6 +9,8 @@ import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import br.com.htcursos.MensagemUtil;
+
 @Controller
 public class ProdutoController {
 
@@ -34,7 +36,7 @@ public class ProdutoController {
 		produtos = consultaProdutoService.buscarTodos();
 	}
 	
-	public void salvar() {
+	public void salvar() throws ValorInvalido {
 		try {
 			ProdutoRequest produtoRequest = new ProdutoRequest(produto.getDescricao(), produto.getValorUnitario());
 			adicionaProdutoService.inserir(produtoRequest);
