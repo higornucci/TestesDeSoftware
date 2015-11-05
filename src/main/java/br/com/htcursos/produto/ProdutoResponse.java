@@ -29,5 +29,13 @@ public class ProdutoResponse {
 	public double getValorUnitario() {
 		return valorUnitario;
 	}
+	
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
+	public void setValorUnitario(double valorUnitario) {
+		this.valorUnitario = valorUnitario;
+	}
 
 }

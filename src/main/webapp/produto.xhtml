@@ -22,22 +22,22 @@
 	<h3>Cadastro de Produtos</h3>
 	<h:form id="form-cadastro" prependId="false" style="width: 400px;">
 		<div class="form-group">
-			<h:outputLabel jsf:for="descricao" value="Descrição:" />
-			<h:inputText id="descricao" value="#{produtoController.produto.descricao}"
+			<h:outputLabel jsf:for="campo-descricao" value="Descrição:" />
+			<h:inputText id="campo-descricao" value="#{produtoController.produto.descricao}"
 				styleClass="form-control" jsf:placeholder="Digite a descrição"
 				jsf:autofocus="true" />
 		</div>
 
 		<div class="form-group">
-			<h:outputLabel jsf:for="valorUnitario" value="Valor Unitário:" />
-			<h:inputText id="valorUnitario" styleClass="form-control"
+			<h:outputLabel jsf:for="campo-valor-unitario" value="Valor Unitário:" />
+			<h:inputText id="campo-valor-unitario" styleClass="form-control"
 				value="#{produtoController.produto.valorUnitario}"
 				jsf:placeholder="Digite o valor unitário" />
 		</div>
 
 		<h:commandButton actionListener="#{produtoController.prepararInclusao()}" 
 			value="Novo" styleClass="btn btn-default" />
-		<h:commandButton styleClass="btn btn-primary"
+		<h:commandButton styleClass="btn btn-primary" id="botao-salvar"
 			actionListener="#{produtoController.salvar()}" value="Salvar" />
 
 	</h:form>
@@ -49,11 +49,11 @@
 			styleClass="table table-hover table-condensed">
 			<h:column>
 				<f:facet name="header">#</f:facet>
-				#{produto.id}
+				<h:outputText styleClass="label-id" value="#{produto.id}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">Descrição</f:facet>
-				#{produto.descricao}
+				<h:outputText styleClass="label-descricao" value="#{produto.descricao}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">Valor Unitário</f:facet>
@@ -62,7 +62,7 @@
 			<h:column>
 				<f:facet name="header">Opções</f:facet>
 				<h:commandButton actionListener="#{produtoController.prepararEdicao(produto)}" 
-					value="Editar" styleClass="btn btn-default btn-xs" />
+					value="Editar" styleClass="btn btn-default btn-xs botao-edicao-#{produto.id}" />
 			</h:column>
 		</h:dataTable>
 	</h:form>
