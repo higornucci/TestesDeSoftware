@@ -1,8 +1,8 @@
 package br.com.htcursos.teste;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.*;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 public class TestaCalculoPorcentagemDeVenda {
@@ -16,7 +16,7 @@ public class TestaCalculoPorcentagemDeVenda {
 		CalculoPorcentagemDaVenda v = new CalculoPorcentagemDaVenda();
 		Double valorRetornado = v.calcularPorcentagemDeComissao(valorDaVenda);
 
-		Assert.assertEquals(valorDaComissaoEsperado, valorRetornado, 0.001);
+		assertThat(valorRetornado, equalTo(valorDaComissaoEsperado));
 	}
 
 	@Test
@@ -28,7 +28,7 @@ public class TestaCalculoPorcentagemDeVenda {
 		CalculoPorcentagemDaVenda v = new CalculoPorcentagemDaVenda();
 		Double valorRetornado = v.calcularPorcentagemDeComissao(valorDaVenda);
 
-		Assert.assertEquals(valorDaComissaoEsperado, valorRetornado, 0.001);
+		assertThat(valorDaComissaoEsperado, is(valorRetornado));
 	}
 	
 	@Test
@@ -40,7 +40,7 @@ public class TestaCalculoPorcentagemDeVenda {
 		CalculoPorcentagemDaVenda v = new CalculoPorcentagemDaVenda();
 		Double valorRetornado = v.calcularPorcentagemDeComissao(valorDaVenda);
 
-		Assert.assertEquals(valorDaComissaoEsperado, valorRetornado, 0.001);
+		assertEquals(valorDaComissaoEsperado, valorRetornado, 0.001);
 	}
 	
 	@Test
@@ -52,7 +52,7 @@ public class TestaCalculoPorcentagemDeVenda {
 		CalculoPorcentagemDaVenda v = new CalculoPorcentagemDaVenda();
 		Double valorRetornado = v.calcularPorcentagemDeComissao(valorDaVenda);
 
-		Assert.assertEquals(valorDaComissaoEsperado, valorRetornado, 0.001);
+		assertEquals(valorDaComissaoEsperado, valorRetornado, 0.001);
 	}
 	
 	@Test
@@ -63,6 +63,6 @@ public class TestaCalculoPorcentagemDeVenda {
 		CalculoPorcentagemDaVenda v = new CalculoPorcentagemDaVenda();
 		Double valorRetornado = v.calcularPorcentagemDeComissao(valorDaVenda);
 
-		Assert.assertEquals(valorDaComissaoEsperado, valorRetornado, 0.001);
+		assertEquals(valorDaComissaoEsperado, valorRetornado, 0.001);
 	}
 }
