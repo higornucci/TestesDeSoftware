@@ -1,9 +1,11 @@
-package br.com.htcursos.teste;
+package br.com.htcursos.comissao;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
 
 import org.junit.Test;
+
+import br.com.htcursos.comissao.CalculoPorcentagemDaVenda;
 
 public class TestaCalculoPorcentagemDeVenda {
 

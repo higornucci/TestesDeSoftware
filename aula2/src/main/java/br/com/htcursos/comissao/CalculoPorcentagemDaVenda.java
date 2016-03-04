@@ -1,4 +1,4 @@
-package br.com.htcursos.teste;
+package br.com.htcursos.comissao;
 
 public class CalculoPorcentagemDaVenda {
 
