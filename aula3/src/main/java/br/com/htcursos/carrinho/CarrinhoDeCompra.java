@@ -1,6 +1,7 @@
 package br.com.htcursos.carrinho;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CarrinhoDeCompra {
@@ -20,6 +21,6 @@ public class CarrinhoDeCompra {
 	}
 
 	public List<ItemDoCarrinho> getItensDoCarrinho() {
-		return itensDoCarrinho;
+		return Collections.unmodifiableList(itensDoCarrinho);
 	}
 }
