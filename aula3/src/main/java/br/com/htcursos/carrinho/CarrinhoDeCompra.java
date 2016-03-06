@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import carrinho.FreteService;
+
 public class CarrinhoDeCompra {
 	
 	private List<ItemDoCarrinho> itensDoCarrinho;
@@ -22,5 +24,10 @@ public class CarrinhoDeCompra {
 
 	public List<ItemDoCarrinho> getItensDoCarrinho() {
 		return Collections.unmodifiableList(itensDoCarrinho);
+	}
+
+	public double getValorComFrete(FreteService freteService) {
+		double totalDosItens = itensDoCarrinho.stream().mapToDouble(s -> s.getProduto().getValorUnitario()).sum();
+		return totalDosItens + freteService.calcular();
 	}
 }

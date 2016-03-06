@@ -55,8 +55,6 @@ public class PedidoTeste extends AbstractTransactionalJUnit4SpringContextTests {
 		Pedido pedido2 = Pedido.criar(produtosPedido2, pedidoRepository);
 		pedidoRepository.salvar(pedido2);
 		
-		List<Pedido> pedidos = pedidoRepository.buscarTodos();
-		
 		// act
 		Double totalRetornado = pedidoRepository.somarTodosOsPedidos();
 		
