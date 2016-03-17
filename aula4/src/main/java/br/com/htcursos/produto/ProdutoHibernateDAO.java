@@ -15,6 +15,13 @@ public class ProdutoHibernateDAO implements ProdutoRepository {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
+	public ProdutoHibernateDAO() {
+	}
+
+	public ProdutoHibernateDAO(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+	
 	@Override
 	public Produto buscarPelo(int id) {
 		return entityManager.find(Produto.class, id);

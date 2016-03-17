@@ -1,11 +1,14 @@
 package produto;
 
 import static com.jayway.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
+
+import java.util.List;
 
 import javax.ws.rs.core.MediaType;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import com.jayway.restassured.path.json.JsonPath;
@@ -21,26 +24,30 @@ public class ProdutoResourceTeste {
 			accept(MediaType.APPLICATION_JSON).
 		expect().
 			statusCode(200).
+			body("id", equalTo(5)).
 			body("descricao", equalTo("Geladeira")).
 		when().
-			get("http://localhost:8080/testesdesoftware/rest/produtos/5");
+			get("http://localhost:8080/aula4/rest/produtos/5");
 	}
 	
 	@Test
 	public void deve_retornar_todos_os_produtos() throws Exception {
 		Response json = given().
 				accept(MediaType.APPLICATION_JSON).
+			expect().
+				statusCode(200).
+				body("id", Matchers.hasItem(5)).
 			when().
-				get("http://localhost:8080/aula4/rest/produtos/5");
+				get("http://localhost:8080/aula4/rest/produtos/");
 		
 		JsonPath jsonPath = new JsonPath(json.getBody().asString());
-		int id = jsonPath.getInt("id");
-		String descricao = jsonPath.get("descricao");
-		double valorUnitario = jsonPath.getDouble("valorUnitario");
+		List<Integer> ids = jsonPath.getList("id");
+		List<String> descricoes = jsonPath.getList("descricao");
+		List<Float> valoresUnitarios = jsonPath.getList("valorUnitario");
 		
-		assertTrue(5 == id);
-		assertEquals("Geladeira", descricao);
-		assertTrue(1200d == valorUnitario);
+		assertThat(ids, hasItem(5));
+		assertThat(descricoes, hasItem("Geladeira"));
+		assertThat(valoresUnitarios, hasItem(1200f));
 	}
 	
 	@Test
