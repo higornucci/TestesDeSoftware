@@ -1,16 +1,30 @@
 package br.com.htcursos.carrinho;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class CarrinhoHibernateDAO implements CarrinhoRepository {
 
+	@PersistenceContext
+	private EntityManager entityManager;
+	
 	@Override
-	public void salvar(CarrinhoDeCompra carrinho) {
-		// TODO Auto-generated method stub
-		
+	public void inserir(CarrinhoDeCompra carrinho) {
+		entityManager.persist(carrinho);
 	}
 
 	@Override
-	public void buscarPelo(int id) {
-		// TODO Auto-generated method stub
+	public CarrinhoDeCompra buscarPelo(int id) {
+		return entityManager.find(CarrinhoDeCompra.class, id);
+		
+	}
+
+	public void editar(CarrinhoDeCompra carrinho) {
+		
+		entityManager.merge(carrinho);
 		
 	}
 
