@@ -1,5 +1,7 @@
 package br.com.htcursos.carrinho;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -26,6 +28,12 @@ public class CarrinhoHibernateDAO implements CarrinhoRepository {
 		
 		entityManager.merge(carrinho);
 		
+	}
+
+	@Override
+	public List<ItemDoCarrinho> buscarTodosOsItensDo(CarrinhoDeCompra carrinhoDeCompra) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
