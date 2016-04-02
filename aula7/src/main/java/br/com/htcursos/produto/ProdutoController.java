@@ -70,7 +70,7 @@ public class ProdutoController {
 	}
 	
 	public List<ProdutoResponse> getProdutos() {
-		return produtos;
+		return consultaProdutoService.buscarTodos();
 	}
 
 	public boolean isEdicao() {

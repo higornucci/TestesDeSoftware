@@ -2,6 +2,8 @@ package selenium;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GooglePage {
 	
@@ -9,10 +11,10 @@ public class GooglePage {
 
 	public GooglePage(WebDriver driver) {
 		this.driver = driver;
+		irParaPaginaDeBusca();
 	}
 	
 	public GooglePage buscar(String termo) {
-		irParaPaginaDeBusca();
 		digitarTermoNoCampoDeBusca(termo);
         clicarEmPesquisar();
 		return this;
@@ -20,6 +22,7 @@ public class GooglePage {
 
 	private void clicarEmPesquisar() {
 		driver.findElement(By.name("btnG")).click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.id("ires")));
 	}
 
 	private void digitarTermoNoCampoDeBusca(String termo) {

@@ -11,19 +11,20 @@ public class ProdutoPage {
 
 	public ProdutoPage(WebDriver driver) {
 		this.driver = driver;
+		irParaCadastroDeProdutos();
 	}
 
 	public void cadastrar(Produto produto) {
-		irParaCadastroDeProdutos();
-		digitarDescricao(produto.getDescricao());
-		digitarValorUnitario(produto.getValorUnitario());
-		
-		clicarEmSalvar();
+		salvarProduto(produto);
 	}
 	
 	public void editar(Produto produto) {
-		irParaCadastroDeProdutos();
 		clicarNoBotaoEditarDo(produto);
+		
+		salvarProduto(produto);
+	}
+
+	private void salvarProduto(Produto produto) {
 		digitarDescricao(produto.getDescricao());
 		digitarValorUnitario(produto.getValorUnitario());
 		
