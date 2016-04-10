@@ -2,10 +2,10 @@ package carrinhoDeCompra;
 
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import br.com.htcursos.carrinho.CarrinhoDeCompra;
 import br.com.htcursos.carrinho.ItemDoCarrinho;
@@ -15,13 +15,13 @@ public class CarrinhoDeCompraTeste {
 	private static final int UM = 1;
 	private Produto celular;
 
-	@Before
+	@BeforeMethod
 	public void inicializar() throws Exception {
 		double valorUnitario = 1300d;
 		celular = new Produto("Nexus 5", valorUnitario);
 	}
 
-	@Test
+	@Test(threadPoolSize = 3, invocationCount = 1000)
 	public void deve_poder_adicionar_itens_ao_carrinho() {
 		ItemDoCarrinho umCelular = new ItemDoCarrinho(celular, UM);
 		

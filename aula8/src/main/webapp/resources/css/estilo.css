@@ -1,0 +1,7 @@
+.escondida {
+	display: none;
+}
+
+.escondida:hover {
+	display: inline-block;
+}

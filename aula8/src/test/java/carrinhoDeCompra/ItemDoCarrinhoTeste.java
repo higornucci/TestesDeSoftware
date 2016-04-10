@@ -2,8 +2,8 @@ package carrinhoDeCompra;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import br.com.htcursos.carrinho.ItemDoCarrinho;
 import br.com.htcursos.produto.Produto;
@@ -12,9 +12,9 @@ public class ItemDoCarrinhoTeste {
 
 	private Produto geladeira;
 
-	@Before
+	@BeforeMethod
 	public void inicializar() throws Exception {
-		geladeira = new Produto("Geladeira", 1200d);
+		geladeira = ProdutoBuilder.novo().criar();
 	}
 	
 	@Test

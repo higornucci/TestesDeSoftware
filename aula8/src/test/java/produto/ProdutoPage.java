@@ -17,22 +17,12 @@ public class ProdutoPage {
 	public void cadastrar(Produto produto) {
 		salvarProduto(produto);
 	}
-	
-	public void editar(Produto produto) {
-		clicarNoBotaoEditarDo(produto);
-		
-		salvarProduto(produto);
-	}
 
 	private void salvarProduto(Produto produto) {
 		digitarDescricao(produto.getDescricao());
 		digitarValorUnitario(produto.getValorUnitario());
 		
 		clicarEmSalvar();
-	}
-
-	private void clicarNoBotaoEditarDo(Produto produto) {
-		driver.findElement(By.className("botao-edicao-" + produto.getId())).click();
 	}
 
 	private void irParaCadastroDeProdutos() {

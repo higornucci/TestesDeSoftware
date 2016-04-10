@@ -2,17 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"  
 	xmlns:jsf="http://xmlns.jcp.org/jsf/passthrough" lang="en">
 
 <head>
-	<title>Produtos</title>
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"></link>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
+<title>Produtos</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"></link>
+<link type="text/css" rel="stylesheet" href="/resources/css/estilo.css"></link>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript">
 		function confirmarExclusao(nome) {
 			return window.confirm("Deseja excluir o " + nome + "?");
 		}
@@ -23,7 +25,8 @@
 	<h:form id="form-cadastro" prependId="false" style="width: 400px;">
 		<div class="form-group">
 			<h:outputLabel jsf:for="campo-descricao" value="Descrição:" />
-			<h:inputText id="campo-descricao" value="#{produtoController.produto.descricao}"
+			<h:inputText id="campo-descricao"
+				value="#{produtoController.produto.descricao}"
 				styleClass="form-control" jsf:placeholder="Digite a descrição"
 				jsf:autofocus="true" />
 		</div>
@@ -35,36 +38,25 @@
 				jsf:placeholder="Digite o valor unitário" />
 		</div>
 
-		<h:commandButton actionListener="#{produtoController.prepararInclusao()}" 
-			value="Novo" styleClass="btn btn-default" />
+		<h:commandButton
+			actionListener="#{produtoController.prepararInclusao()}" value="Novo"
+			styleClass="btn btn-default" />
 		<h:commandButton styleClass="btn btn-primary" id="botao-salvar"
 			actionListener="#{produtoController.salvar()}" value="Salvar" />
+		<div class="escondida">
+			<h:commandButton actionListener="#{produtoController.excluir()}"
+				value="Excluir" styleClass="btn btn-danger btn-xs" />
+		</div>
 
 	</h:form>
 
 	<h:messages />
 
-	<h:form>
-		<h:dataTable value="#{produtoController.produtos}" var="produto"
-			styleClass="table table-hover table-condensed">
-			<h:column>
-				<f:facet name="header">#</f:facet>
-				<h:outputText styleClass="label-id" value="#{produto.id}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">Descrição</f:facet>
-				<h:outputText styleClass="label-descricao" value="#{produto.descricao}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">Valor Unitário</f:facet>
-				#{produto.valorUnitario}
-			</h:column>
-			<h:column>
-				<f:facet name="header">Opções</f:facet>
-				<h:commandButton actionListener="#{produtoController.prepararEdicao(produto)}" 
-					value="Editar" styleClass="btn btn-default btn-xs botao-edicao-#{produto.id}" />
-			</h:column>
-		</h:dataTable>
+	<h:form id="form-listagem">
+		<p:selectOneMenu id="selecao" value="#{produtoController.produto}" >
+			<p:ajax event="change" update="form-cadastro" />
+			<f:selectItems value="#{produtoController.produtos}" itemLabel="#{produto.descricao}" var="produto" />
+		</p:selectOneMenu>
 	</h:form>
 </body>
 </html>

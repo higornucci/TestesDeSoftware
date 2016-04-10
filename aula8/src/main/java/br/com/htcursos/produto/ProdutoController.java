@@ -20,6 +20,9 @@ public class ProdutoController {
 	@Autowired
 	private ConsultaProdutoService consultaProdutoService;
 	
+	@Autowired
+	private RemoveProdutoService removeProdutoService;
+	
 	private ProdutoResponse produto;
 	
 	List<ProdutoResponse> produtos;
@@ -40,7 +43,7 @@ public class ProdutoController {
 		try {
 			ProdutoRequest produtoRequest = new ProdutoRequest(produto.getDescricao(), produto.getValorUnitario());
 			adicionaProdutoService.inserir(produtoRequest);
-			MensagemUtil.mensagemInfo("Usuário salvo.");
+			MensagemUtil.mensagemInfo("Produto salvo.");
 			
 			if(!edicao) {
 				produtos.add(produto);
@@ -48,6 +51,17 @@ public class ProdutoController {
 			produto = new ProdutoResponse();
 		} catch (ServiceException e) {
 			MensagemUtil.mensagemErro("Login já existente.");
+		}
+	}
+	
+	public void excluir() throws ValorInvalido {
+		try {
+			removeProdutoService.remover(produto.getId());
+			produtos.remove(produto);
+			produto = new ProdutoResponse();
+			MensagemUtil.mensagemInfo("Produto excluído.");
+		} catch (ServiceException e) {
+			MensagemUtil.mensagemErro("Não foi possível excluir.");
 		}
 	}
 	
